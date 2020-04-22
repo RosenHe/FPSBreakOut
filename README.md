@@ -1,17 +1,23 @@
 # FPSBreakOut
 
+ 1.Added crosshair GUI, balls spawn from crosshair location
+ 2.fixed orientations of most gameworld objects/physics
+ 3.Added collision effect for boxes
+
+More details in the changelog.txt.
+
 TODOs:
 
--A Score Board.
--Opening Scene and Ending Scene.(I do the art later. please contact me if you have something specific)
--Box interactions
--player reaching goal, move to next stage
+- A Score Board.
+- Opening Scene and Ending Scene.(I do the art later. please contact me if you have something specific)
+- Box interactions
+- player reaching goal, move to next stage
 - need to make boxes stop falling and be platforms, and give points to player
--currently can shoot forever, need to add cooldown for ball shooting
+- currently can shoot forever, need to add cooldown for ball shooting
 - need GUI for current score, and shooting cool down, and maybe a timer.
 
 low priority:
--Balls disappear (instead of popping particle effect,phasing, or sounds) 
+- Balls disappear (instead of popping particle effect,phasing, or sounds) 
 
 
 Game mechanics description: (just for reference, feel free to add)
