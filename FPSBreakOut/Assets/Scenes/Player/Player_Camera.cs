@@ -11,13 +11,10 @@ public class Player_Camera : MonoBehaviour
 
     private float xAxisClamp;
 
-    GameObject prefab;//
-
     private void Awake()
     {
         LockCursor();
         xAxisClamp = 0.0f;
-        prefab = Resources.Load("Sphere") as GameObject;//
     }
 
 
@@ -54,13 +51,7 @@ public class Player_Camera : MonoBehaviour
 
         transform.Rotate(Vector3.left * mouseY);
         playerBody.Rotate(Vector3.up * mouseX);
-        if(Input.GetMouseButtonDown(0))//
-        {
-            GameObject projectile = Instantiate(prefab) as GameObject;
-            projectile.transform.position = transform.forward * 2;
-            Rigidbody rb = projectile.GetComponent<Rigidbody>();
-            rb.velocity = transform.forward*40;
-        }
+
     }
 
     private void ClampXAxisRotationToValue(float value)

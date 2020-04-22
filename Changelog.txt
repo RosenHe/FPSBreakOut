@@ -1,0 +1,9 @@
+
+
+4-21-20
+-Fixed ball shooting from the floor - now shoots ahead of player location
+-Balls now disappear after a time delay orafter colliding with objects with tag name "box"
+-Balls and player are now prefabs for quicker scene creation
+-changed offset for player mask, now face is infront of player
+-added mesh for ball object
+-slight reorganization of assets, now most things under resources for quick scene creation
