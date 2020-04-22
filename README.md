@@ -7,7 +7,7 @@
 More details in the changelog.txt.
 
 TODOs:
-
+- mid-air movement of player is not active, will need to add this 
 - A Score Board.
 - Opening Scene and Ending Scene.(I do the art later. please contact me if you have something specific)
 - Box interactions
