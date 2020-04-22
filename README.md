@@ -1,5 +1,11 @@
 # FPSBreakOut
 
+1. The Camera is setted.
+2. Character can throw a ball by clicking mouse button left.
+3. Character can move by press W,A,S,D,and space to jump.
+4. Three Boxes is created.
+
+
 Please Check the Changelog.txt for the most recent changes 
 
 Questions left:
