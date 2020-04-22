@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
 {
+
+    private GameObject effectToSpawn; //firing effect 
+  
     GameObject prefab;
-    [SerializeField] private Transform playerBody;
+    Transform firePoint;
+    [SerializeField] private GameObject player;
+    [SerializeField] private float ballSpeed = 20;
+
 
     void Awake()
     {
         prefab = Resources.Load("Ball/ball") as GameObject;//easy load for projectiles
+
+        firePoint = player.GetComponentInChildren<Transform>().GetChild(0).GetChild(0);
     }
 
     void Update()
@@ -22,9 +30,11 @@ public class PlayerShoot : MonoBehaviour
         if (Input.GetMouseButtonDown(0))// makes balls
         {
             GameObject projectile = Instantiate(prefab) as GameObject;
-            projectile.transform.position = playerBody.position + transform.forward * 2;
+            projectile.transform.position = firePoint.position;
+            projectile.transform.rotation = firePoint.rotation;
+            
             Rigidbody rb = projectile.GetComponent<Rigidbody>();
-            rb.velocity = transform.forward * 40;
+            rb.velocity = firePoint.transform.forward * ballSpeed;
         }
     }
 }
