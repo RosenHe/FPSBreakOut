@@ -1,33 +1,26 @@
 # FPSBreakOut
 
-1. The Camera is setted.
-2. Character can throw a ball by clicking mouse button left.
-3. Character can move by press W,A,S,D,and space to jump.
-4. Three Boxes is created.
+TODOs:
 
-Questions left:
--Ball spawning in wrong location - should spawn infront of player moving at player speed + ball speed
--ball should also spawn in the middle of new cos
 -A Score Board.
 -Opening Scene and Ending Scene.(I do the art later. please contact me if you have something specific)
+-Box interactions
+-player reaching goal, move to next stage
+- need to make boxes stop falling and be platforms, and give points to player
+-currently can shoot forever, need to add cooldown for ball shooting
+- need GUI for current score, and shooting cool down, and maybe a timer.
 
-Completed:
-Added a crosshair
-
-
-
-
-Current Bugs:
-
-
+low priority:
+-Balls disappear (instead of popping particle effect,phasing, or sounds) 
 
 
-Game mechanics description:
+Game mechanics description: (just for reference, feel free to add)
 
 There is a box wall that has an assortment of boxes. 
   The box wall will move forward as the player moves by jumping on platforms
   The platforms are made as the player shoots boxes off the wall with balls.
 
+ball should spawn infront of the player in the middle of the cross hair and should be moving initially on the able that the camera is facing
 
 when colliding with a box the ball should disappear,
  then the box should give points based on the color and number for the box

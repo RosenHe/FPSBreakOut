@@ -1,4 +1,8 @@
-
+4-22-20
+-fixed ball shooting from random location, added crosshair GUI
+-balls now spawn from center of crosshair
+-rotated the boxes 180 degrees around the y, this makes them face the player each box is .5 units away from each other
+-Added physics for boxes - they now move forward when hit by balls
 
 4-21-20
 -Fixed ball shooting from the floor - now shoots ahead of player location
@@ -7,3 +11,7 @@
 -changed offset for player mask, now face is infront of player
 -added mesh for ball object
 -slight reorganization of assets, now most things under resources for quick scene creation
+-The Camera is setted.
+-Character can throw a ball by clicking mouse button left.
+-Character can move by press W,A,S,D,and space to jump.
+-Three Boxes is created.
