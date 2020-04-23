@@ -1,12 +1,15 @@
 # FPSBreakOut
 
- 1.Added crosshair GUI, balls spawn from crosshair location
- 2.fixed orientations of most gameworld objects/physics
- 3.Added collision effect for boxes
+ 1. Added crosshair GUI, balls spawn from crosshair location
+ 2. fixed orientations of most gameworld objects/physics
+ 3. Added collision effect for boxes
+ 4. boxes now move towards player when hit!
 
 More details in the changelog.txt.
 
 TODOs:
+- boxes need to stop falling and become platforms when reaching a plane
+- player dies when falls to ground, has number of starting lives
 - mid-air movement of player is not active, will need to add this 
 - A Score Board.
 - Opening Scene and Ending Scene.(I do the art later. please contact me if you have something specific)
