@@ -8,64 +8,73 @@ public class PlayerMove : MonoBehaviour
     //[SerializeField] private string verticalInputName;
     [SerializeField] private float movementSpeed;
 
-    private CharacterController charController;
+    private CharacterController controller;
 
     [SerializeField] private AnimationCurve jumpFallOff;
-    [SerializeField] private float jumpMultiplier;
+    [SerializeField] private float jumpMultiplier = 1;
     [SerializeField] private KeyCode jumpKey;
 
+    private Vector3 moveDirection;
+    private float speed = 10;
+    private float jumpSpeed =10;
+    float horizInput;
+    float vertInput;
+    Vector3 forwardMovement;
+    Vector3 rightMovement;
+    Vector3 normal;
+    float airSpeed = 5;
+    float gravity = 5f;
 
     private bool isJumping;
 
     private void Awake()
     {
-        charController = GetComponent<CharacterController>();
+        controller = GetComponent<CharacterController>();
+
     }
 
     private void Update()
     {
+        
         PlayerMovement();
     }
 
     private void PlayerMovement()
     {
-        //float horizInput = Input.GetAxis(horizontalInputName) * movementSpeed;
-        //float vertInput = Input.GetAxis(verticalInputName) * movementSpeed;
-        float horizInput = Input.GetAxis("Horizontal") * movementSpeed;
-        float vertInput = Input.GetAxis("Vertical") * movementSpeed;
 
-        Vector3 forwardMovement = transform.forward * vertInput;
-        Vector3 rightMovement = transform.right * horizInput;
 
-        charController.SimpleMove(forwardMovement + rightMovement);
+        horizInput = Input.GetAxis("Horizontal") * movementSpeed;
+        vertInput = Input.GetAxis("Vertical") * movementSpeed;
+        forwardMovement = transform.forward * vertInput;
+        rightMovement = transform.right * horizInput;
 
-        JumpInput();
-
-    }
-
-    private void JumpInput()
-    {
-        if(Input.GetKeyDown(jumpKey) && !isJumping)
+        if (Input.GetKeyDown(jumpKey) && !isJumping)
         {
             isJumping = true;
             StartCoroutine(JumpEvent());
         }
+        else
+        {
+            normal = (forwardMovement + rightMovement) * Time.deltaTime;
+            normal.y = normal.y - gravity * Time.deltaTime;
+            controller.Move(normal);
+        }
     }
-
     private IEnumerator JumpEvent()
     {
-        charController.slopeLimit = 90.0f;
+        controller.slopeLimit = 90.0f;
         float timeInAir = 0.0f;
 
         do
         {
             float jumpForce = jumpFallOff.Evaluate(timeInAir);
-            charController.Move(Vector3.up * jumpForce * jumpMultiplier * Time.deltaTime);
+            moveDirection = new Vector3(Input.GetAxis("Horizontal") * airSpeed * Time.deltaTime, jumpForce * jumpMultiplier * Time.deltaTime, Input.GetAxis("Vertical") * airSpeed * Time.deltaTime) ;
+            controller.Move(moveDirection);
             timeInAir += Time.deltaTime;
             yield return null;
-        } while (!charController.isGrounded && charController.collisionFlags != CollisionFlags.Above);
+        } while (!controller.isGrounded && controller.collisionFlags != CollisionFlags.Above);
 
-        charController.slopeLimit = 45.0f;
+        controller.slopeLimit = 45.0f;
         isJumping = false;
     }
 
