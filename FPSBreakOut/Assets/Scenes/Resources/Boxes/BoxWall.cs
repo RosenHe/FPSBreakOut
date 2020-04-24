@@ -29,9 +29,9 @@ public class BoxWall : MonoBehaviour
     private void Awake()
     {
         
-        prefabBox1 = Resources.Load("box_1") as GameObject;
-        prefabBox2 = Resources.Load("box_2") as GameObject;
-        prefabBox3 = Resources.Load("box_3") as GameObject;
+        prefabBox1 = Resources.Load("Boxes/box_1") as GameObject;
+        prefabBox2 = Resources.Load("Boxes/box_2") as GameObject;
+        prefabBox3 = Resources.Load("Boxes/box_3") as GameObject;
     }
 
 
