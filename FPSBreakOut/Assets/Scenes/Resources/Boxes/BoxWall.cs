@@ -23,9 +23,10 @@ public class BoxWall : MonoBehaviour
     private int boxNumYellow;
     private int boxNumRed;
 
-    private GameObject[,,] boxWall; 
-    [SerializeField] private enum difficulty { Na, Easy, Medium, Hard};
-    private difficulty diff;
+    private List<GameObject> boxList = new List<GameObject>();
+    private GameObject[,,] boxWall;
+    [SerializeField] private int difficulty = 0;
+ 
     private void Awake()
     {
         
@@ -40,42 +41,69 @@ public class BoxWall : MonoBehaviour
 
         SetDifficulty();
         MakeBoxes();
-        GameObject box1 = Instantiate(prefabBox1) as GameObject;
-        GameObject box2 = Instantiate(prefabBox2) as GameObject;
-        GameObject box3 = Instantiate(prefabBox3) as GameObject;
+        
     }
 
     private void MakeBoxes()
     {
 
+        //after getting the number of boxes we need we create that amount and add to an array
+        for (int a = 0; a < boxNumBlue; a++){
+            GameObject blueBox = Instantiate(prefabBox3) as GameObject;
+            blueBox.transform.SetParent(transform, false);
+            boxList.Add(blueBox);
+        }
+        for (int b = 0; b < boxNumBlue; b++)
+        {
+            GameObject ylwBox = Instantiate(prefabBox2) as GameObject;
+            ylwBox.transform.SetParent(transform, false);
+            boxList.Add(ylwBox);
+        }
+        for (int c = 0; c < boxNumBlue; c++)
+        {
+            GameObject redBox = Instantiate(prefabBox1) as GameObject;
+            redBox.transform.SetParent(transform, false);
+            boxList.Add(redBox);
+        }
+
+        for (int i = 0; i < boxList.Count; i++)
+        {
+            boxList[i].transform.position = new Vector3(0,0, boxList[i].transform.position.z + (i * 1.5f));
+        }
     }
 
     private void SetDifficulty() //set the number of box types based on difficulty and size of wall
     {
         
-        switch (diff)
+        switch (difficulty)
         {
-            case difficulty.Hard:
+            case 3: //hard
                 {
                     boxNumBlue = width * 2;
                     boxNumYellow = width * 2;
                     boxNumRed = width * 5;
-
-
                     break;
                 }
-            case difficulty.Medium:
+            case 2: //medium
                 {
                     boxNumBlue = width * 3;
                     boxNumYellow = width * 3;
                     boxNumRed = width * 3;
                     break;
                 }
-            default :
+            case 1 : //easy
                 {
                     boxNumBlue = width * 5;
                     boxNumYellow = width * 2;
                     boxNumRed = width * 2;
+                    break;
+                }
+            default:
+                {
+                    Debug.LogError("difficulty not set");
+                    boxNumBlue = 0;
+                    boxNumYellow = 0;
+                    boxNumRed = 0;
                     break;
                 }
 
