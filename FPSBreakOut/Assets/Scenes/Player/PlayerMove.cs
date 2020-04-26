@@ -26,6 +26,7 @@ public class PlayerMove : MonoBehaviour
     float gravity = 5f;
 
     private bool isJumping;
+    private bool dblJumping;
 
     private void Awake()
     {
@@ -48,10 +49,15 @@ public class PlayerMove : MonoBehaviour
         forwardMovement = transform.forward * vertInput;
         rightMovement = transform.right * horizInput;
 
-        if (Input.GetKeyDown(jumpKey) && !isJumping)
+        if (Input.GetKeyDown(jumpKey) && !isJumping || controller.collisionFlags == CollisionFlags.Sides && !isJumping)
         {
             isJumping = true;
             StartCoroutine(JumpEvent());
+        }
+        else if(Input.GetKeyDown(jumpKey) && isJumping && !dblJumping) //double jump
+        {
+            dblJumping = true;
+            StartCoroutine(DblJumpEvent());
         }
         else
         {
@@ -68,7 +74,7 @@ public class PlayerMove : MonoBehaviour
         do
         {
             float jumpForce = jumpFallOff.Evaluate(timeInAir);
-            moveDirection = Vector3.up * (jumpForce * jumpMultiplier * Time.deltaTime) + normal;
+            moveDirection = Vector3.up * (jumpForce * jumpMultiplier * 1.5f* Time.deltaTime) + normal;
             controller.Move(moveDirection);
             timeInAir += Time.deltaTime;
             yield return null;
@@ -76,6 +82,26 @@ public class PlayerMove : MonoBehaviour
 
         controller.slopeLimit = 45.0f;
         isJumping = false;
+    }
+
+    private IEnumerator DblJumpEvent()
+    {
+        controller.slopeLimit = 90.0f;
+        float timeInAir = 0.0f;
+
+        do
+        {
+            float jumpForce = jumpFallOff.Evaluate(timeInAir);
+            moveDirection = Vector3.up * (jumpForce * jumpMultiplier * Time.deltaTime) + normal;
+            controller.Move(moveDirection);
+            timeInAir += Time.deltaTime;
+            yield return null;
+        } while (!controller.isGrounded && controller.collisionFlags != CollisionFlags.Above);
+
+        controller.slopeLimit = 45.0f;
+        dblJumping = false;
+
+        
     }
 
 }

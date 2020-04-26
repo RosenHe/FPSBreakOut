@@ -25,16 +25,26 @@ public class boxInteraction : MonoBehaviour
 
     private void OnCollisionEnter(Collision col)
     {
-        float force = 13f;
+        float force = 15f;
 
-        if (col.gameObject.tag == "ball")
+        Transform target = col.gameObject.GetComponentInParent<Transform>();
+
+        if (col.gameObject.tag == "ball" && transform.parent != null)
         {
+            boxBody.isKinematic = false;
             Debug.Log(col.gameObject.name);
             transform.parent = null;
-            Vector3 dir = new Vector3(0, 0, -1);
+            Vector3 dir = new Vector3(0, .1f, -1);
             boxBody.useGravity = true;
             boxBody.AddForce(dir*force, ForceMode.VelocityChange);
         }
+
+        if (col.gameObject.tag == "Player" && boxBody.isKinematic == false)
+        {
+            boxBody.AddForce(Vector3.down * force);
+        }
+
+
     }
     IEnumerator ExecuteAfterTime(float time)
     {
