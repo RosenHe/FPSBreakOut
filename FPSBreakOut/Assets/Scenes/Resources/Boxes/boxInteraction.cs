@@ -7,6 +7,7 @@ public class boxInteraction : MonoBehaviour
     Rigidbody boxBody;
     Transform boxT;
     private float speed = 60f;
+    [SerializeField] private int countDown = 0;
     private void Awake()
     {
         boxBody = GetComponent<Rigidbody>();

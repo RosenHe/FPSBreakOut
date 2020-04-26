@@ -18,12 +18,7 @@ public class DropPlane : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        //gotta add the player death / game restart logic call here
-        if(col.gameObject.name == "Player")
-        {
-            Debug.Log("You died");
-            Application.LoadLevel(0);
-        }
+
 
         //stops the boxes from moving
         if(col.gameObject.tag == "box")
@@ -33,6 +28,16 @@ public class DropPlane : MonoBehaviour
             col.gameObject.GetComponent<Rigidbody>().isKinematic = true;
 
 
+        }
+    }
+
+    private void OnTriggerExit(Collider col)
+    {
+        //gotta add the player death / game restart logic call here
+        if (col.gameObject.name == "Player")
+        {
+            Debug.Log("You died");
+            Application.LoadLevel(0);
         }
     }
 }
