@@ -12,6 +12,7 @@ public class BoxWall : MonoBehaviour
         Medium: 27 bl, 27 yl, 27 red
         Hard: 18 bl, 18 yl, 45 red
     */
+    [SerializeField] Transform playerT;
     GameObject prefabBox1;
     GameObject prefabBox2;
     GameObject prefabBox3;
@@ -33,12 +34,14 @@ public class BoxWall : MonoBehaviour
         prefabBox1 = Resources.Load("Boxes/box_1") as GameObject;
         prefabBox2 = Resources.Load("Boxes/box_2") as GameObject;
         prefabBox3 = Resources.Load("Boxes/box_3") as GameObject;
+
+        
     }
 
 
     private void Start()
-    { 
-
+    {
+        transform.position = new Vector3(-6, 0, 16);
         SetDifficulty();
         MakeBoxes();
         
@@ -89,15 +92,13 @@ public class BoxWall : MonoBehaviour
                 {
                     boxList[buffer].transform.position = new Vector3(boxList[buffer].transform.position.y + ((row) * 1.5f), boxList[buffer].transform.position.y + ((dim) * 1.5f), boxList[buffer].transform.position.z + ((col) * 1.5f));
                     buffer++;
-                    //Debug.Log(buffer++);
+                    //Debug.Log(buffer);
 
 
-                }
-                //buffer += dim;
+                };
             }
 
         }
-        //boxList..transform.position = new Vector3(0, boxList[buffer].transform.position.y + ((buffer) * 1.5f), boxList[buffer].transform.position.z + ((buffer) * 1.5f));
     }
 
     private void SetDifficulty() //set the number of box types based on difficulty and size of wall
@@ -145,10 +146,19 @@ public class BoxWall : MonoBehaviour
     }
 
     //keep the wall a certain distance from the player
+    //not perfect but good enough for now
     public void StayAway()
     {
-        //gotta figure out how I want to do this one
+        distance = transform.position.z - playerT.transform.position.z;
+        if (distance <= 17 && !Input.GetKey(KeyCode.S))
+        {
+            distance = 18f;
+            transform.position = new Vector3( transform.position.x, transform.position.y, ((transform.position - playerT.transform.position).normalized * distance + playerT.transform.position).z);
+        }
+
     }
+
+    private float distance;
 
     //Fisher-Yates-Random-Shuffler
     public static List<GameObject> FYShuffler(List<GameObject> aList)

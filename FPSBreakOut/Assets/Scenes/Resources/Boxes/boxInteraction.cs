@@ -30,7 +30,7 @@ public class boxInteraction : MonoBehaviour
         if (col.gameObject.tag == "ball")
         {
             Debug.Log(col.gameObject.name);
-
+            transform.parent = null;
             Vector3 dir = new Vector3(0, 0, -1);
             boxBody.useGravity = true;
             boxBody.AddForce(dir*force, ForceMode.VelocityChange);
