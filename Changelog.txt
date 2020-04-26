@@ -1,3 +1,17 @@
+4-26-20
+-Added crosshair GUI, balls spawn from crosshair location
+-fixed orientations of most gameworld objects/physics
+-Added collision effect for boxes
+-boxes now move towards player when hit!
+-wall now moves away from player using a collider
+-player movement was buggy, now is fixed
+-Whenever the game runs a random assortment of boxes gets generated, there are 81 boxes per wall
+-walls have three difficulty levels easy medium and hard and that changes the number of boxes:
+- Easy : Blue:45, Yellow:18, Red:18
+- Medium : Blue:27, Yellow:27, Red:27
+- Hard : Blue:18, Yellow:18, Red:45
+- The box wall is arranged in a 3x3x9 grid 
+
 4-22-20
 -fixed ball shooting from random location, added crosshair GUI
 -balls now spawn from center of crosshair
