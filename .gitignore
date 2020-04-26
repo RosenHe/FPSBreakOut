@@ -35,13 +35,13 @@ ExportedObj/
 *.tmp
 *.user
 *.userprefs
-#*.pidb
+*.pidb
 *.booproj
 *.svd
-#*.pdb
-#*.mdb
-#*.opendb
-#*.VC.db
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
 
 # Unity3D generated meta files
 *.pidb.meta
@@ -52,8 +52,8 @@ ExportedObj/
 sysinfo.txt
 
 # Builds
-#*.apk
-#*.unitypackage
+*.apk
+*.unitypackage
 
 # Crashlytics generated file
 crashlytics-build.properties
