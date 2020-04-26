@@ -47,7 +47,7 @@ public class BoxWall : MonoBehaviour
     private void MakeBoxes()
     {
 
-        //after getting the number of boxes we need we create that amount and add to an array
+        //after getting the number of boxes we need we create that amount and add to a list
         for (int a = 0; a < boxNumBlue; a++){
             GameObject blueBox = Instantiate(prefabBox3) as GameObject;
             blueBox.transform.SetParent(transform, false);
@@ -66,6 +66,8 @@ public class BoxWall : MonoBehaviour
             boxList.Add(redBox);
         }
 
+        //then we randomly sort them!
+        boxList = FYShuffler(boxList);
         for (int i = 0; i < boxList.Count; i++)
         {
             boxList[i].transform.position = new Vector3(0,0, boxList[i].transform.position.z + (i * 1.5f));
@@ -114,5 +116,25 @@ public class BoxWall : MonoBehaviour
     void Update()
     {
         
+    }
+
+    //Fisher-Yates-Random-Shuffler
+    public static List<GameObject> FYShuffler(List<GameObject> aList)
+    {
+
+        System.Random _random = new System.Random();
+
+        GameObject myGO;
+
+        int n = aList.Count;
+        for (int i = 0; i < n; i++)
+        {
+            int r = i + (int)(_random.NextDouble() * (n - i));
+            myGO = aList[r];
+            aList[r] = aList[i];
+            aList[i] = myGO;
+        }
+
+        return aList;
     }
 }
