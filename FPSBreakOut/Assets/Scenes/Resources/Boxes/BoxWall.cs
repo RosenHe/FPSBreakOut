@@ -16,15 +16,15 @@ public class BoxWall : MonoBehaviour
     GameObject prefabBox2;
     GameObject prefabBox3;
 
-    [SerializeField] private int width = 9;
-    [SerializeField] private int depth = 3;
-    [SerializeField] private int height = 3;
+    private int width = 9;
+    private int depth = 3;
+    private int height = 3;
+
     private int boxNumBlue;
     private int boxNumYellow;
     private int boxNumRed;
 
     private List<GameObject> boxList = new List<GameObject>();
-    private GameObject[,,] boxWall;
     [SerializeField] private int difficulty = 0;
  
     private void Awake()
@@ -46,32 +46,58 @@ public class BoxWall : MonoBehaviour
 
     private void MakeBoxes()
     {
+        int buffer = 0;
 
         //after getting the number of boxes we need we create that amount and add to a list
-        for (int a = 0; a < boxNumBlue; a++){
+        for (int a = 0; a < boxNumBlue; a++)
+        {
             GameObject blueBox = Instantiate(prefabBox3) as GameObject;
             blueBox.transform.SetParent(transform, false);
+            blueBox.name = "box-" + a.ToString();
             boxList.Add(blueBox);
         }
-        for (int b = 0; b < boxNumBlue; b++)
+
+        buffer = boxList.Count;
+        for (int b = 0; b < boxNumYellow; b++)
         {
             GameObject ylwBox = Instantiate(prefabBox2) as GameObject;
             ylwBox.transform.SetParent(transform, false);
+            ylwBox.name = "box-" + (buffer + b).ToString();
             boxList.Add(ylwBox);
         }
-        for (int c = 0; c < boxNumBlue; c++)
+
+        buffer = boxList.Count;
+        for (int c = 0; c < boxNumRed; c++)
         {
             GameObject redBox = Instantiate(prefabBox1) as GameObject;
             redBox.transform.SetParent(transform, false);
+            redBox.name = "box-" + (buffer + c).ToString();
             boxList.Add(redBox);
         }
-
-        //then we randomly sort them!
+        Debug.Log(boxList.Count);
+        //then we randomly sort them
         boxList = FYShuffler(boxList);
-        for (int i = 0; i < boxList.Count; i++)
+
+        buffer = 0;
+        int dim = 0;
+        //now we organize them into a wall!
+        for (int row = 0; row < width; row++)
         {
-            boxList[i].transform.position = new Vector3(0,0, boxList[i].transform.position.z + (i * 1.5f));
+            for (int col = 0; col < depth; col++)
+            {
+                for (dim = 0; dim < height; dim++)
+                {
+                    boxList[buffer].transform.position = new Vector3(boxList[buffer].transform.position.y + ((row) * 1.5f), boxList[buffer].transform.position.y + ((dim) * 1.5f), boxList[buffer].transform.position.z + ((col) * 1.5f));
+                    buffer++;
+                    //Debug.Log(buffer++);
+
+
+                }
+                //buffer += dim;
+            }
+
         }
+        //boxList..transform.position = new Vector3(0, boxList[buffer].transform.position.y + ((buffer) * 1.5f), boxList[buffer].transform.position.z + ((buffer) * 1.5f));
     }
 
     private void SetDifficulty() //set the number of box types based on difficulty and size of wall
@@ -115,7 +141,13 @@ public class BoxWall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        StayAway();
+    }
+
+    //keep the wall a certain distance from the player
+    public void StayAway()
+    {
+        //gotta figure out how I want to do this one
     }
 
     //Fisher-Yates-Random-Shuffler
