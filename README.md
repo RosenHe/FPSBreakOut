@@ -1,14 +1,16 @@
 # FPSBreakOut
-
+Completed!
+- boxes need to stop falling and become platforms when reaching a plane (also scale up now)
+- Player movement smoothed out/ box/boxwall movement smoothed out
 More details in the changelog.txt.
 
 TODOs:
-- boxes need to stop falling and become platforms when reaching a plane
-- player dies when falls to ground, has number of starting lives
+- add timer for boxes to countdown and disappear, boxes should change color until reaching '1' and then poof.
+- player dies when falls to ground, has number of starting lives (currently only restarts the game)
 - A Score Board.
 - Opening Scene and Ending Scene.(I do the art later. please contact me if you have something specific)
 - player reaching goal, move to next stage
-- need to make boxes stop falling and be platforms, and give points to player
+- need give points to player
 - currently can shoot forever, need to add cooldown for ball shooting
 - need GUI for current score, and shooting cool down, and maybe a timer.
 

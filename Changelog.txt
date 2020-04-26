@@ -12,6 +12,7 @@
 - Hard : Blue:18, Yellow:18, Red:45
 - The box wall is arranged in a 3x3x9 grid 
 
+
 4-22-20
 -fixed ball shooting from random location, added crosshair GUI
 -balls now spawn from center of crosshair
