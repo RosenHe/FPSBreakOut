@@ -139,26 +139,39 @@ public class BoxWall : MonoBehaviour
         }
     }
 
+
+    private float distance;
+
     // Update is called once per frame
     void Update()
     {
-        StayAway();
+    
     }
-
-    //keep the wall a certain distance from the player
-    //not perfect but good enough for now
-    public void StayAway()
+    
+    public void OnTriggerEnter(Collider other)
     {
-        distance = transform.position.z - playerT.transform.position.z;
-        if (distance <= 17 && !Input.GetKey(KeyCode.S))
+        if (other.gameObject.name == "Player")
         {
-            distance = 18f;
-            transform.position = new Vector3( transform.position.x, transform.position.y, ((transform.position - playerT.transform.position).normalized * distance + playerT.transform.position).z);
+            //have to set the collision distance dynamically for smoothness
+            distance = transform.position.z - other.gameObject.transform.position.z;
         }
-
     }
 
-    private float distance;
+    public void OnTriggerStay(Collider col)
+    {
+        if (col.gameObject.name == "Player")
+        {
+            //Debug.Log("entered the collider trigger");
+
+            //only moves wall when player is moving towards it and colliding
+            if (!Input.GetKey(KeyCode.S))
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y, (col.gameObject.transform.position.z + distance));
+            }
+        }
+        
+    }
+
 
     //Fisher-Yates-Random-Shuffler
     public static List<GameObject> FYShuffler(List<GameObject> aList)

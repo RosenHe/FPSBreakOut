@@ -11,7 +11,7 @@ public class PlayerMove : MonoBehaviour
     private CharacterController controller;
 
     [SerializeField] private AnimationCurve jumpFallOff;
-    [SerializeField] private float jumpMultiplier = 1;
+    [SerializeField] private float jumpMultiplier = 20;
     [SerializeField] private KeyCode jumpKey;
 
     private Vector3 moveDirection;
@@ -55,10 +55,10 @@ public class PlayerMove : MonoBehaviour
         }
         else
         {
-            normal = (forwardMovement + rightMovement) * Time.deltaTime;
-            normal.y = normal.y - gravity * Time.deltaTime;
-            controller.Move(normal);
+            moveDirection = (forwardMovement + rightMovement) * Time.deltaTime;
         }
+        moveDirection.y = moveDirection.y - gravity * Time.deltaTime;
+        controller.Move(moveDirection);
     }
     private IEnumerator JumpEvent()
     {
@@ -68,7 +68,7 @@ public class PlayerMove : MonoBehaviour
         do
         {
             float jumpForce = jumpFallOff.Evaluate(timeInAir);
-            moveDirection = new Vector3(Input.GetAxis("Horizontal") * airSpeed * Time.deltaTime, jumpForce * jumpMultiplier * Time.deltaTime, Input.GetAxis("Vertical") * airSpeed * Time.deltaTime) ;
+            moveDirection = Vector3.up * (jumpForce * jumpMultiplier * Time.deltaTime) + normal;
             controller.Move(moveDirection);
             timeInAir += Time.deltaTime;
             yield return null;
