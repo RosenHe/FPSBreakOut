@@ -1,28 +1,58 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class boxInteraction : MonoBehaviour
 {
     Rigidbody boxBody;
     Transform boxT;
     private float speed = 60f;
-    [SerializeField] private int countDown = 0;
+
+    [SerializeField] private float countDown = 0f;
+    private float timeLeft;
+    public Text textTimer;
+
+
+    public bool isPlatform = false;
+    public bool beenHit = false;
+    public float boxDistance;
+
     private void Awake()
     {
         boxBody = GetComponent<Rigidbody>();
         boxT = GetComponent<Transform>();
+
     }
     void Start()
     {
-
+        textTimer = GameObject.Find("countDownText").GetComponent<Text>();
+        timeLeft = countDown; //set box timer
+        boxDistance = GetComponent<Collider>().bounds.extents.y;
     }
 
-    // Update is called once per frame
     void Update()
     {
+        if (isPlatform)
+        {
 
+            //Debug.Log("box is platform in update");
+            if (timeLeft > 0)
+            {
+                textTimer.text = timeLeft.ToString("0");
+                timeLeft -= 1 * Time.deltaTime;
+            }
+
+            if (timeLeft <= 0)
+            {
+                textTimer.text = " ";
+                Destroy(gameObject);
+            }
+
+        }
     }
+
+
 
     private void OnCollisionEnter(Collision col)
     {
@@ -33,25 +63,37 @@ public class boxInteraction : MonoBehaviour
         if (col.gameObject.tag == "ball" && transform.parent != null) //first ball hit
         {
             boxBody.isKinematic = false;
-            Debug.Log(col.gameObject.name);
+            beenHit = true;
+            //Debug.Log(col.gameObject.name);
             transform.parent = null;
-            Vector3 dir = new Vector3(0, .1f, -1);
+            Vector3 dir = new Vector3(0, 0, -1);
             boxBody.useGravity = true;
             boxBody.AddForce(dir * force, ForceMode.VelocityChange);
         }
-        else if (col.gameObject.tag == "ball" && transform.parent == null ||    //second ball hit
-                 col.gameObject.tag == "Player" && boxBody.isKinematic == false)//or touches player
+        else if ((col.gameObject.tag == "ball") && boxBody.useGravity == true) //second ball hit or touches player
         {
             boxBody.AddForce(Vector3.down * force);
         }
 
 
     }
-    IEnumerator ExecuteAfterTime(float time)
+    private void OnTriggerEnter(Collider col)
     {
-        yield return new WaitForSeconds(time);
+        if (col.gameObject.tag == "Player")
+        {
+            //Debug.Log("contacting Player");
+            isPlatform = true;
+        }
+    }
 
-        // Code to execute after the delay
-       
+
+    private void OnTriggerExit(Collider col)
+    {
+        if (col.gameObject.tag == "Player")
+        {
+            //Debug.Log("leaving Player");
+            isPlatform = false;
+            textTimer.text = " ";
+        }
     }
 }

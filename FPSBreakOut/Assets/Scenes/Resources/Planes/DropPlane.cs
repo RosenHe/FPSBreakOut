@@ -24,10 +24,18 @@ public class DropPlane : MonoBehaviour
         if(col.gameObject.tag == "box")
         {   
             col.gameObject.transform.rotation = new Quaternion(0, 0, 0, 0);
+            //col.gameObject.transform.Translate(Vector3.up);
             col.gameObject.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-            col.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            Rigidbody R = col.gameObject.GetComponent<Rigidbody>();
 
+            //freeze box
+            //R.constraints = RigidbodyConstraints.FreezeRotation;
+            //R.velocity = Vector3.zero;
+            R.useGravity = false;
+            R.isKinematic = true;
 
+            //Debug.Log("colliding with plane");
+               
         }
     }
 

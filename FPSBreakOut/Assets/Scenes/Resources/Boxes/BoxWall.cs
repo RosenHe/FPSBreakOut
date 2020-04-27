@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BoxWall : MonoBehaviour
 {   /*
@@ -12,11 +13,17 @@ public class BoxWall : MonoBehaviour
         Medium: 27 bl, 27 yl, 27 red
         Hard: 18 bl, 18 yl, 45 red
     */
+
+    public List<GameObject> boxList = new List<GameObject>();
+    public Text textRef;
+
+    [SerializeField] private int difficulty = 0;
     [SerializeField] Transform playerT;
+
     GameObject prefabBox1;
     GameObject prefabBox2;
     GameObject prefabBox3;
-
+    
     private int width = 9;
     private int depth = 3;
     private int height = 3;
@@ -24,17 +31,15 @@ public class BoxWall : MonoBehaviour
     private int boxNumBlue;
     private int boxNumYellow;
     private int boxNumRed;
+    private float distance;
 
-    private List<GameObject> boxList = new List<GameObject>();
-    [SerializeField] private int difficulty = 0;
- 
+
     private void Awake()
     {
         
         prefabBox1 = Resources.Load("Boxes/box_3") as GameObject;
         prefabBox2 = Resources.Load("Boxes/box_4") as GameObject;
         prefabBox3 = Resources.Load("Boxes/box_5") as GameObject;
-
         
     }
 
@@ -54,30 +59,30 @@ public class BoxWall : MonoBehaviour
         //after getting the number of boxes we need we create that amount and add to a list
         for (int a = 0; a < boxNumBlue; a++)
         {
-            GameObject blueBox = Instantiate(prefabBox3) as GameObject;
-            blueBox.transform.SetParent(transform, false);
-            blueBox.name = "box-" + a.ToString();
-            boxList.Add(blueBox);
+            GameObject color3Box = Instantiate(prefabBox3) as GameObject;
+            color3Box.transform.SetParent(transform, false);
+            color3Box.name = "box-" + a.ToString();
+            boxList.Add(color3Box);
         }
 
         buffer = boxList.Count;
         for (int b = 0; b < boxNumYellow; b++)
         {
-            GameObject ylwBox = Instantiate(prefabBox2) as GameObject;
-            ylwBox.transform.SetParent(transform, false);
-            ylwBox.name = "box-" + (buffer + b).ToString();
-            boxList.Add(ylwBox);
+            GameObject color4Box = Instantiate(prefabBox2) as GameObject;
+            color4Box.transform.SetParent(transform, false);
+            color4Box.name = "box-" + (buffer + b).ToString();
+            boxList.Add(color4Box);
         }
 
         buffer = boxList.Count;
         for (int c = 0; c < boxNumRed; c++)
         {
-            GameObject redBox = Instantiate(prefabBox1) as GameObject;
-            redBox.transform.SetParent(transform, false);
-            redBox.name = "box-" + (buffer + c).ToString();
-            boxList.Add(redBox);
+            GameObject color5Box = Instantiate(prefabBox1) as GameObject;
+            color5Box.transform.SetParent(transform, false);
+            color5Box.name = "box-" + (buffer + c).ToString();
+            boxList.Add(color5Box);
         }
-        Debug.Log(boxList.Count);
+        //Debug.Log(boxList.Count);
         //then we randomly sort them
         boxList = FYShuffler(boxList);
 
@@ -140,7 +145,7 @@ public class BoxWall : MonoBehaviour
     }
 
 
-    private float distance;
+
 
     // Update is called once per frame
     void Update()

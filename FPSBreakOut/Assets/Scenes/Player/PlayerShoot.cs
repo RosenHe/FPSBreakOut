@@ -9,8 +9,8 @@ public class PlayerShoot : MonoBehaviour
   
     GameObject prefab;
     Transform firePoint;
-    [SerializeField] private GameObject player;
-    [SerializeField] private float ballSpeed = 20;
+   [SerializeField] private GameObject player;
+   [SerializeField] private float ballSpeed = 20;
 
 
     void Awake()
