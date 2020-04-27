@@ -14,6 +14,11 @@ public class boxInteraction : MonoBehaviour
     public Text textTimer;
 
 
+    public Material[] materials;
+    Renderer rend;
+
+
+
     public bool isPlatform = false;
     public bool beenHit = false;
     public float boxDistance;
@@ -22,10 +27,12 @@ public class boxInteraction : MonoBehaviour
     {
         boxBody = GetComponent<Rigidbody>();
         boxT = GetComponent<Transform>();
-
+        rend = GetComponent<Renderer>();
     }
     void Start()
     {
+
+        //rend.sharedMaterial = materials[0];
         textTimer = GameObject.Find("countDownText").GetComponent<Text>();
         timeLeft = countDown; //set box timer
         boxDistance = GetComponent<Collider>().bounds.extents.y;
@@ -39,8 +46,9 @@ public class boxInteraction : MonoBehaviour
             //Debug.Log("box is platform in update");
             if (timeLeft > 0)
             {
-                textTimer.text = timeLeft.ToString("0");
+                textTimer.text = Mathf.Ceil(timeLeft).ToString("0");
                 timeLeft -= 1 * Time.deltaTime;
+                rend.sharedMaterial = materials[(int)Mathf.Ceil(timeLeft)-1];
             }
 
             if (timeLeft <= 0)
