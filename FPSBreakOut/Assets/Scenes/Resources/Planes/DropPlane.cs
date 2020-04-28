@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DropPlane : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class DropPlane : MonoBehaviour
         //stops the boxes from moving
         if(col.gameObject.tag == "box")
         {   
-            col.gameObject.transform.rotation = new Quaternion(0, 0, 0, 0);
+            col.gameObject.transform.rotation = new Quaternion(0, 180, 0, 0);
             //col.gameObject.transform.Translate(Vector3.up);
             col.gameObject.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
             Rigidbody R = col.gameObject.GetComponent<Rigidbody>();
@@ -45,7 +46,7 @@ public class DropPlane : MonoBehaviour
         if (col.gameObject.name == "Player")
         {
             Debug.Log("You died");
-            Application.LoadLevel(0);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

@@ -115,9 +115,9 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 99bb5cf256fa4a84fa491d91e45a5904, type: 2}
   - {fileID: 2100000, guid: 05568ad13fe74dc449029970d6a19343, type: 2}
   - {fileID: 2100000, guid: 82badc3790d5fd54c9c97eb27ff014e8, type: 2}
+  flyDistance: 12
   isPlatform: 0
   beenHit: 0
-  boxDistance: 0
 --- !u!54 &-8100403592204201562
 Rigidbody:
   m_ObjectHideFlags: 0

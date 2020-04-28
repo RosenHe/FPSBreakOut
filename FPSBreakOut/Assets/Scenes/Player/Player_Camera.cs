@@ -5,11 +5,17 @@ using UnityEngine;
 public class Player_Camera : MonoBehaviour
 {
     [SerializeField] private string mouseXInputName, mouseYInputName;
-    [SerializeField] private float mouseSensitivity;
+    public float mouseSensitivity;
 
     [SerializeField] private Transform playerBody;
 
     private float xAxisClamp;
+
+    public void SetMouseSensitivity(float mouseSpeed)
+    {
+        mouseSensitivity = mouseSpeed;
+    }
+
 
     private void Awake()
     {

@@ -18,10 +18,10 @@ public class boxInteraction : MonoBehaviour
     Renderer rend;
 
 
-
+    [SerializeField] private float flyDistance = 14f;
     public bool isPlatform = false;
     public bool beenHit = false;
-    public float boxDistance;
+    private float boxDistance;
 
     private void Awake()
     {
@@ -74,9 +74,9 @@ public class boxInteraction : MonoBehaviour
             beenHit = true;
             //Debug.Log(col.gameObject.name);
             transform.parent = null;
-            Vector3 dir = new Vector3(0, 0, -1);
+            Vector3 dir = new Vector3(0, Random.Range(0f,1f), -1);
             boxBody.useGravity = true;
-            boxBody.AddForce(dir * force, ForceMode.VelocityChange);
+            boxBody.AddForce(dir * flyDistance, ForceMode.VelocityChange);
         }
         else if ((col.gameObject.tag == "ball") && boxBody.useGravity == true) //second ball hit or touches player
         {

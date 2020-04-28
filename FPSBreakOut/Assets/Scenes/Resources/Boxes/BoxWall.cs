@@ -54,6 +54,8 @@ public class BoxWall : MonoBehaviour
 
     private void MakeBoxes()
     {
+        
+        
         int buffer = 0;
 
         //after getting the number of boxes we need we create that amount and add to a list
@@ -88,12 +90,15 @@ public class BoxWall : MonoBehaviour
 
         buffer = 0;
         int dim = 0;
+
+        float diffMultiplier = 2*( 1 - difficulty);
+
         //now we organize them into a wall!
-        for (int row = 0; row < width; row++)
+        for (int row = 0; row < width + diffMultiplier; row++)
         {
             for (int col = 0; col < depth; col++)
             {
-                for (dim = 0; dim < height; dim++)
+                for (dim = 0; dim < height ; dim++)
                 {
                     boxList[buffer].transform.position = new Vector3(boxList[buffer].transform.position.y + ((row) * 1.5f), boxList[buffer].transform.position.y + ((dim) * 1.5f), boxList[buffer].transform.position.z + ((col) * 1.5f));
                     buffer++;
@@ -104,6 +109,12 @@ public class BoxWall : MonoBehaviour
             }
 
         }
+        for (; buffer < boxList.Count; buffer++)
+        {
+            Destroy(boxList[buffer]);
+        }
+
+
     }
 
     private void SetDifficulty() //set the number of box types based on difficulty and size of wall
