@@ -21,7 +21,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 4}
-  m_MinSize: {x: 875, y: 421}
+  m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 0
 --- !u!114 &2
@@ -43,8 +43,8 @@ MonoBehaviour:
     y: 454
     width: 916
     height: 477
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 101, y: 121}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -71,10 +71,10 @@ MonoBehaviour:
     y: 0
     width: 916
     height: 931
-  m_MinSize: {x: 201, y: 321}
-  m_MaxSize: {x: 4001, y: 8021}
+  m_MinSize: {x: 201, y: 342}
+  m_MaxSize: {x: 4001, y: 8042}
   vertical: 1
-  controlID: 67688
+  controlID: 125
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -120,7 +120,7 @@ MonoBehaviour:
     height: 30
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
-  m_LastLoadedLayoutName: Axel-2-screen
+  m_LastLoadedLayoutName: 
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -164,10 +164,10 @@ MonoBehaviour:
     y: 30
     width: 1904
     height: 931
-  m_MinSize: {x: 908, y: 371}
-  m_MaxSize: {x: 22003, y: 14021}
+  m_MinSize: {x: 911, y: 392}
+  m_MaxSize: {x: 22006, y: 14042}
   vertical: 0
-  controlID: 67661
+  controlID: 64
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -216,10 +216,10 @@ MonoBehaviour:
     y: 0
     width: 712
     height: 931
-  m_MinSize: {x: 432, y: 371}
-  m_MaxSize: {x: 14002, y: 14021}
+  m_MinSize: {x: 434, y: 392}
+  m_MaxSize: {x: 14004, y: 14042}
   vertical: 0
-  controlID: 67667
+  controlID: 151
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -241,10 +241,10 @@ MonoBehaviour:
     y: 0
     width: 383
     height: 931
-  m_MinSize: {x: 232, y: 371}
-  m_MaxSize: {x: 10002, y: 14021}
+  m_MinSize: {x: 232, y: 392}
+  m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 67734
+  controlID: 17
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -291,8 +291,8 @@ MonoBehaviour:
     y: 620
     width: 383
     height: 311
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 102, y: 121}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 20}
@@ -317,8 +317,8 @@ MonoBehaviour:
     y: 0
     width: 329
     height: 931
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 21}
   m_Panes:
   - {fileID: 21}
@@ -343,8 +343,8 @@ MonoBehaviour:
     y: 0
     width: 276
     height: 931
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 22}
   m_Panes:
   - {fileID: 22}
@@ -619,20 +619,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Scenes/Resources/Ball
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Scenes/Resources/Ball
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Axel\UnityProjects\fpsbreakout\FPSBreakOut\FPSBreakOut
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 36350000
-    m_LastClickedID: 13622
-    m_ExpandedIDs: 000000003435000036350000383500003a3500003c3500003e3500005635000000ca9a3b
+    m_SelectedIDs: 76350000
+    m_LastClickedID: 13686
+    m_ExpandedIDs: 000000005c3500005e350000603500006235000064350000663500006835000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -660,7 +660,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000003435000036350000383500003a3500003c3500003e3500005635000000ca9a3b
+    m_ExpandedIDs: 000000005c3500005e3500006035000062350000643500006635000068350000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -889,9 +889,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: 1a350000
       m_LastClickedID: 0
-      m_ExpandedIDs: 1cb0f7ff3cb0f7ff7cb0f7ffb8b0f7fff4b0f7ff30b1f7ff3eb1f7ffe0b1f7ff00b2f7ffdab2f7ff1ab3f7ff5ab3f7ffaab3f7ffbcb3f7ff3ab4f7ff3a23f8ff4c23f8ffaa23f8ff5024f8ff3e25f8ff5626f8ff4235f8ff5435f8ff504df8ff8258f8fff25af8ff045bf8ffe85bf8ff085cf8ff485cf8ff845cf8ffc05cf8ffca5cf8ffde5cf8ffa65df8ffc65df8ffa05ef8ffe05ef8ff205ff8ff2e5ff8ff545ff8ff4073f8ff6073f8ff3674f8ff7274f8ffae74f8ffb874f8ffda74f8ff8476f8fff076f8ff1077f8ffea77f8ff2a78f8ff6a78f8ffba78f8ffcc78f8ff7e83f8ff8284f8ff5e85f8ff2e86f8ff5ca8f8ff66a9f8ff54aaf8ffaeaaf8ffa8abf8ff28b2f8ffc2b2f8ff80e3f8ff06e4f8ff18e4f8ff6ae4f8ffb0e4f8ff36f0f8ff66f2f8ffb843f9ff4a4bf9ff124cf9ff244cf9ffb25df9ffe85ff9ff0860f9ff4860f9ff8460f9ffc060f9fffc60f9ff0a61f9ff6061f9ff0462f9ff2462f9ff6862f9ffa862f9ffe862f9ff2863f9ff3a63f9ffd263f9ff5664f9ff7664f9ff4c65f9ff8865f9ffc465f9ff1066f9ff1e66f9ff967bf9ff527cf9ff607cf9ff727cf9ff987cf9ff7e7df9ff9e7df9ff747ef9ffb07ef9ffec7ef9fff67ef9ff187ff9ff4027faff4e27faff6027faff3c3ffaffc05efaff2a06fbff282bfbff062cfbff742cfbffa237fbffbc37fbffd637fbff7638fbffb247fbff0255fbff1e55fbfffe55fbff4456fbff8a56fbffa256fbfff856fbff3a6efbff526ffbff0070fbffa070fbffcc72fbff7473fbff7c73fbffdc73fbfff874fbff0e76fbffa676fbffae76fbffea76fbff2e77fbffaab7fbff32cbfbff3acbfbff76cbfbff5ce2fbff64e2fbff08e5fbff10e5fbff64e5fbff5ee6fbff7ce6fbffc003fcffce03fcffd603fcffc205fcffca05fcffa614fcff0215fcff6415fcff8a15fcffde15fcff2a16fcff5016fcff1017fcff6017fcfffa17fcff4e18fcffa218fcff3e19fcffb819fcff903afcff0e67fcff9268fcff9468fcffb468fcffa269fcffb069fcffb869fcffd26afcffd46afcffee6bfcfff06bfcff146dfcff226dfcff246dfcffc46efcffc66efcff4c74fcff5074fcfff274fcff3876fcff9476fcff868cfcff40e0fcffe0e8fcffe2e8fcffdeeafcffeceafcffeeeafcff42ebfcff98ebfcffb8ebfcff4adcfdff58dcfdff5adcfdff38edfdff620cfeff7a18feffd61efeff7a25feff0226feff0227feffbc27feff4c28feff2629feff9237feffd07efeffca9cfeffb6a9feff7eb0feffb4b0fefff6b0feffa2b1feff76b2feffc0b2feff02b5feff0ceafeffc0f1feff6cf3feffaef4feffb2f6feffe4f6feff20f7feff4098ffff54a6ffff92faffff64370000de5500004a5800004c6f00002870000014710000fe710000cc7b0000847d00006e7e000048800000d2880000c2ab0000dec60000c2c70000cec70000eed40000ecd800004cd90000b6f80000ccf800000af9000080fb0000e8fb0000f6fb0000defc000066fd0000c2fd000076ff0000d2ff000030030100fc0a01002a0c0100180d01000e0e01008e0e0100d40e0100680f0100ba0f0100e80f01003c100100e210010030110100fc110100641201005a1d0100c81d0100a0290100082a0100323901003e3b0100ec3d0100543e0100623e0100c85f0100a8690100046e0100e8860100fa8601001e8701008287010086870100948701009e870100c487010080970100e4970100689f010090b701000ec801009ec8010004ca01005aca010004cb010052cb0100f0cb010038cc010046d20100cad2010048d3010088db010076e00100aae0010068ef01002ef2010076f2010092f70100b2f9010028fa0100e2fa010082fb0100cafb0100
+      m_ExpandedIDs: 2cf4ffff4cf4ffffeef4ffff2ef5ffff6ef5ffffaef5ffffd4f5ffffe2f6fffffcf6ffff60f7ffffeef7ffff02f8ffff16f8ffff20f9ffff34f9ffff78faffff8cfaffffa0faffff72fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -952,4 +952,4 @@ MonoBehaviour:
     m_PrefName: Preview_InspectorPreview
   m_PreviewWindow: {fileID: 0}
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 0
+  m_LastVerticalScrollValue: 236
