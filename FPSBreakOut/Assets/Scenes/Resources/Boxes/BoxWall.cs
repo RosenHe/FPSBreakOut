@@ -17,6 +17,7 @@ public class BoxWall : MonoBehaviour
     public List<GameObject> boxList = new List<GameObject>();
     public Text textRef;
 
+    [SerializeField] private bool isEndless = false;
     [SerializeField] private int difficulty = 0;
     [SerializeField] Transform playerT;
 
@@ -119,11 +120,17 @@ public class BoxWall : MonoBehaviour
 
     private void SetDifficulty() //set the number of box types based on difficulty and size of wall
     {
-        
+        if (isEndless)
+        {
+            difficulty = Random.Range(1, 4);
+        }
+
+
         switch (difficulty)
         {
             case 3: //hard
                 {
+                    //transform.Translate(new Vector3(10, 0, 0));
                     boxNumBlue = width * 2;
                     boxNumYellow = width * 2;
                     boxNumRed = width * 5;
@@ -131,6 +138,7 @@ public class BoxWall : MonoBehaviour
                 }
             case 2: //medium
                 {
+                    //transform.Translate(new Vector3(10, 0, 0));
                     boxNumBlue = width * 3;
                     boxNumYellow = width * 3;
                     boxNumRed = width * 3;
@@ -181,9 +189,8 @@ public class BoxWall : MonoBehaviour
 
             //only moves wall when player is moving towards it and colliding
             if (!Input.GetKey(KeyCode.S))
-            {
-                transform.position = new Vector3(transform.position.x, transform.position.y, (col.gameObject.transform.position.z + distance));
-            }
+              transform.position = new Vector3(transform.position.x, transform.position.y, (col.gameObject.transform.position.z + distance));
+            
         }
         
     }

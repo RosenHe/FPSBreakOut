@@ -108,7 +108,8 @@ GameObject:
   - component: {fileID: 8891370910870435120}
   - component: {fileID: 8891370910870435121}
   - component: {fileID: 8891370910870435131}
-  m_Layer: 0
+  - component: {fileID: 7821641147416048828}
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,6 +263,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 8891370910870435122}
   ballSpeed: 20
+--- !u!114 &7821641147416048828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8891370910870435122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6ea8f408b2b19441a8de4a79c81f0b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  restartLevel: 282
+  nextLevel: 283
+  mainMenu: 284
+  gravityToggle: 285
 --- !u!1 &8891370912391857666
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,7 +306,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8891370912391857666}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.693, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6653493782032431592}
@@ -363,3 +380,6 @@ MonoBehaviour:
   mouseYInputName: Mouse Y
   mouseSensitivity: 150
   playerBody: {fileID: 8891370910870435124}
+  camPos: {x: 0, y: 0, z: 0}
+  camRot: {x: 0, y: 0, z: 0, w: 0}
+  camView: 0

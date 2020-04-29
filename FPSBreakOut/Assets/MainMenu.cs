@@ -8,12 +8,12 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); //loads next scene
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2); //loads demo scene
     }
 
     public void PlayEndless()
     {
-        SceneManager.LoadScene(0); //loads next scene
+        SceneManager.LoadScene(1); //loads next scene
     }
 
     public void QuitGame()

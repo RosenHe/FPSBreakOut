@@ -24,6 +24,7 @@ public class PlayerMove : MonoBehaviour
     Vector3 normal;
     float airSpeed = 5;
     float gravity = 5f;
+    public static bool useGravity = true;
 
     private bool isJumping;
     private bool dblJumping;
@@ -63,7 +64,10 @@ public class PlayerMove : MonoBehaviour
         {
             moveDirection = (forwardMovement + rightMovement) * Time.deltaTime;
         }
-        moveDirection.y = moveDirection.y - gravity * Time.deltaTime;
+        if (useGravity)
+        {
+            moveDirection.y = moveDirection.y - gravity * Time.deltaTime;
+        }
         controller.Move(moveDirection);
     }
     private IEnumerator JumpEvent()

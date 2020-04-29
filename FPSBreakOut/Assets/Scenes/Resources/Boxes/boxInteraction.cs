@@ -48,7 +48,11 @@ public class boxInteraction : MonoBehaviour
             {
                 textTimer.text = Mathf.Ceil(timeLeft).ToString("0");
                 timeLeft -= 1 * Time.deltaTime;
-                rend.sharedMaterial = materials[(int)Mathf.Ceil(timeLeft)-1];
+                if (Mathf.Ceil(timeLeft) - 1 >= 0)
+                {
+                    rend.sharedMaterial = materials[(int)Mathf.Ceil(timeLeft) - 1];
+                }
+                
             }
 
             if (timeLeft <= 0)
@@ -64,7 +68,7 @@ public class boxInteraction : MonoBehaviour
 
     private void OnCollisionEnter(Collision col)
     {
-        float force = 15f;
+        float force = 2f;
 
         Transform target = col.gameObject.GetComponentInParent<Transform>();
 
@@ -78,9 +82,9 @@ public class boxInteraction : MonoBehaviour
             boxBody.useGravity = true;
             boxBody.AddForce(dir * flyDistance, ForceMode.VelocityChange);
         }
-        else if ((col.gameObject.tag == "ball") && boxBody.useGravity == true) //second ball hit or touches player
+        else if ((col.gameObject.tag == "ball" || col.gameObject.tag == "Player") && boxBody.useGravity == true) //second ball hit or touches player
         {
-            boxBody.AddForce(Vector3.down * force);
+            boxBody.AddForce(Vector3.down * force, ForceMode.Impulse);
         }
 
 
